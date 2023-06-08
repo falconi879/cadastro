@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+
+<head th:replace="~{template :: head}"></head>
+
+<body>
+
+	<div class="container">
+		<nav class="navbar navbar-expand-lg bg-body-tertiary">
+			<div class="container-fluid">
+				<h1 class="text-center">Lista de Produtos</h1>
+
+				<a class="btn btn-primary" href="produtos\formulario" role="button">Novo</a>
+
+			</div>
+		</nav>
+
+		<table class="table table-dark table-striped">
+			<thead>
+				<tr>
+					<th>CODIGO</th>
+					<th>NOME</th>
+					<th>VALOR</th>
+					<th>MEDIDA</th>
+					<th>OBS:</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="produto : ${lista}">
+					<td th:text="${produto.codigo}"></td>
+					<td th:text="${produto.nome}"></td>
+					<td th:text="${produto.preco}"></td>
+					<td th:text="${produto.medida}"></td>
+					<td th:text="${produto.obs}"></td>
+
+					<td> <a class="btn btn-primary"
+							th:href="@{/produtos/formulario?id={id}(id=${produto.id})}">Editar</a></td>
+					<td>
+						<form action="/produtos" method="post">
+							<input type="hidden" name="_method" value="delete">
+							<input type="hidden" name="id" th:value="${produto.id}">
+
+							<input type="submit" class="btn btn-danger" value="Excluir">
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

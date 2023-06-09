@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+
+<head th:replace="~{template :: head}"></head>
+
+<body>
+
+	<div class="container">
+		<nav class="navbar navbar-expand-lg bg-body-tertiary">
+			<div class="container-fluid">
+				<h1 class="text-center">Lista de Categorias</h1>
+
+				<a class="btn btn-primary" href="categorias\formulario" role="button">Novo</a>
+
+			</div>
+		</nav>
+
+		<table class="table table-dark table-striped">
+			<thead>
+				<tr>
+					<th>CODIGO</th>
+					<th>NOME</th>
+					
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="categoria : ${lista}">
+					<td th:text="${categoria.codigo}"></td>
+					<td th:text="${categoria.nome}"></td>
+										<td> <a class="btn btn-primary"
+							th:href="@{/categorias/formulario?id={id}(id=${categoria.id})}">Editar</a></td>
+					<td>
+						<form action="/categorias" method="post">
+							<input type="hidden" name="_method" value="delete">
+							<input type="hidden" name="id" th:value="${categoria.id}">
+
+							<input type="submit" class="btn btn-danger" value="Excluir">
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

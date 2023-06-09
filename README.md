@@ -1,5 +1,5 @@
 #Aplicando o aprendizado de um curso de JAVA WEB na Alura, com utilização de Spring Boot e Bootstrap 
-#Esta sendo utilizado as dependências para: 
+!#Esta sendo utilizado as dependências para: 
 ##HTML - thymeleaf
 ##Interação com banco de dados - Jpa
 ##Para facilitar na criação das Classes - Lombook
